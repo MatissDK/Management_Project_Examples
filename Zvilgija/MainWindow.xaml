@@ -1,0 +1,570 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Name="MainMenuWindow"
+    x:Class="Zvilgija.MainWindow"
+    Title="UAB Zvilgija" Height="440" Width="760" MinHeight="440" MinWidth="760" Visibility="Hidden"
+    WindowStartupLocation="CenterScreen"
+    Icon="Graphics/Scissors.png">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+            <GradientStop Color="#FFBDC9C2" Offset="0.027" />
+            <GradientStop Color="#FFE0E0E0" Offset="0.057" />
+            <GradientStop Color="White" Offset="0.981" />
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+        <TabControl x:Name="MainTab"
+                    OpacityMask="#FFB94242" SelectionChanged="MainTab_SelectionChanged">
+            <TabControl.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFD7A3E2" Offset="0.004" />
+                    <GradientStop Color="#FFE0E0E0" Offset="0.211" />
+                    <GradientStop Color="White" Offset="0.41" />
+                    <GradientStop Color="White" Offset="0.678" />
+                    <GradientStop Color="#FFE0E0E0" Offset="0.828" />
+                    <GradientStop Color="#FFE2A3DF" Offset="1" />
+                </LinearGradientBrush>
+            </TabControl.Background>
+            <TabItem x:Name="Sales" Header="Sales" FontFamily="Adobe Fan Heiti Std B" BorderBrush="#FF27B2AB"
+                     IsSelected="True">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0" />
+                        <GradientStop Color="#FFEBEBEB" Offset="0.5" />
+                        <GradientStop Color="#FFDDDDDD" Offset="0.5" />
+                        <GradientStop Color="#FF55B6B6" Offset="1" />
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FFE5E5E5">
+                    <ComboBox x:Name="SlBrandCb" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"
+                              Margin="10,40,0,0" SelectionChanged="BrandCb_Selector" />
+                    <ComboBox x:Name="SlTypeCb" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"
+                              Margin="147,40,0,0" SelectionChanged="TypeCb_Selector" />
+                    <ComboBox x:Name="SlProductCb" HorizontalAlignment="Left" VerticalAlignment="Top"
+                              Width="211" Margin="56,73,0,0" SelectionChanged="ProductCb_Selector" />
+                    <ComboBox x:Name="SlVolumeCb" HorizontalAlignment="Left" Margin="292,73,0,0"
+                              VerticalAlignment="Top" Width="73" SelectionChanged="VolumeCb_Selector" />
+                    <Label Content="Product Brand" HorizontalAlignment="Left" VerticalAlignment="Top"
+                           RenderTransformOrigin="0.976,0.731" Margin="10,10,0,0" />
+                    <Label Content="Product type" HorizontalAlignment="Left" Margin="147,10,0,0"
+                           VerticalAlignment="Top" RenderTransformOrigin="1.743,0.385" />
+                    <Label Content="Name" HorizontalAlignment="Left" Margin="10,73,0,0" VerticalAlignment="Top" />
+                    <Button x:Name="SlAddButton" Content="Add Sale" Margin="0,37,10,0" VerticalAlignment="Top"
+                            Height="25"
+                            HorizontalAlignment="Right" Width="109" Click="AddButton_Click" />
+                    <DataGrid x:Name="SalesGrid" Margin="10,104,10,10" SelectionMode="Single" ClipToBounds="True"
+                              IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                ClipboardContentBinding="{x:Null}" Header="Date"
+                                                Width="0.2*" />
+                            <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                ClipboardContentBinding="{x:Null}" Header="Employee" Width="0.16*" />
+                            <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                ClipboardContentBinding="{x:Null}" Header="Product Brand"
+                                                Width="0.13*" />
+                            <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                ClipboardContentBinding="{x:Null}" Header="Product Type"
+                                                Width="0.13*" />
+                            <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                ClipboardContentBinding="{x:Null}" Header="Product Name"
+                                                Width="0.17*" />
+                            <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                ClipboardContentBinding="{x:Null}" Header="Volume"
+                                                Width="0.1*" />
+                            <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                ClipboardContentBinding="{x:Null}" Header="Quantity"
+                                                Width="0.15*" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Delete record" Margin="0,70,10,0" RenderTransformOrigin="0.523,1.091"
+                            HorizontalAlignment="Right" Width="109" Height="25" VerticalAlignment="Top" >
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                <GradientStop Color="#FFFF1700" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Label Content="Remaining in stock" HorizontalAlignment="Left" Margin="288,10,0,0"
+                           VerticalAlignment="Top"
+                           RenderTransformOrigin="0.924,0.615" Height="26" />
+                    <Label x:Name="SlRemainingLabel" Content="" HorizontalAlignment="Left" Margin="292,40,0,0"
+                           VerticalAlignment="Top"
+                           Width="103" Height="22" RenderTransformOrigin="-0.361,0.5" />
+                    <TextBox x:Name="SlInputTextbox" HorizontalAlignment="Left" Height="22" Margin="415,40,0,0"
+                             TextWrapping="Wrap"
+                             VerticalAlignment="Top" Width="61" TextAlignment="Center" Text="0" />
+                    <Label Content="Amount for sell" HorizontalAlignment="Left" Margin="410,10,0,0"
+                           VerticalAlignment="Top" Height="26" RenderTransformOrigin="-3.605,0.474" />
+                    <Button Content="Release selected" Margin="410,70,0,0" VerticalAlignment="Top" Height="25"
+                            HorizontalAlignment="Left" Width="124" Click="ReleaseSelected_Click" />
+                    <Label Content="ml" HorizontalAlignment="Left" Margin="370,70,0,0" VerticalAlignment="Top"
+                           Width="25" />
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Schedule" Header="Schedule" FontFamily="Adobe Fan Heiti Std B" BorderBrush="#FF1FC7BF">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0.494" />
+                        <GradientStop Color="#FF55B6B6" Offset="0.989" />
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FFE5E5E5">
+                    <Grid HorizontalAlignment="Left" Margin="10,10,0,10"
+                          Width="235">
+                        <DatePicker x:Name="ScDatePicker" HorizontalAlignment="Left" Margin="10,10,0,0"
+                                    VerticalAlignment="Top"
+                                    SelectedDateChanged="DatePicker_SelectedDateChanged" Height="27" Width="215"
+                                    FirstDayOfWeek="Monday" />
+                        <Button Content="Register Appointment" HorizontalAlignment="Left" Margin="10,0,0,121"
+                                Width="215" Height="25" VerticalAlignment="Bottom" Click="ScRegisterAppointment_Click" />
+                        <Button Content="Delete" HorizontalAlignment="Left" Margin="125,0,0,79"
+                                VerticalAlignment="Bottom"
+                                Width="100" FontSize="12" Height="25" >
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                    <GradientStop Color="#FFFF0404" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button Content="Edit " HorizontalAlignment="Left" Margin="10,0,0,79"
+                                Width="95" FontSize="12" Height="25" VerticalAlignment="Bottom" >
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                    <GradientStop Color="#FFFD0707" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button Content="Manage schedule" HorizontalAlignment="Left" Margin="10,0,0,10" Width="215"
+                                FontSize="12" Height="30" VerticalAlignment="Bottom" Click="ScManageEmployees_Click">
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFF3F3F3" Offset="0" />
+                                    <GradientStop Color="#FFEBEBEB" Offset="0.5" />
+                                    <GradientStop Color="#FFDDDDDD" Offset="0.5" />
+                                    <GradientStop Color="#FFC9DEDC" Offset="1" />
+                                </LinearGradientBrush>
+                            </Button.Background>
+                        </Button>
+                        <DataGrid x:Name="ScEmployeeList" AutoGenerateColumns="True" Margin="10,61,0,168" Width="215"
+                                  HorizontalAlignment="Left" SelectionMode="Single" ClipToBounds="True"
+                                  IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                    ClipboardContentBinding="{x:Null}" Header="Name" MinWidth="27"
+                                                    Width="100" />
+                                <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                    ClipboardContentBinding="{x:Null}" Header="Surname" MinWidth="27"
+                                                    Width="120" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <Grid Margin="280,10,10,10">
+                        <DataGrid x:Name="ScJobList" AutoGenerateColumns="True" Margin="10" SelectionMode="Single"
+                                  ClipToBounds="True" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                    ClipboardContentBinding="{x:Null}" Header="From" MinWidth="27"
+                                                    Width="50" />
+                                <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                    ClipboardContentBinding="{x:Null}" Header="To" MinWidth="27"
+                                                    Width="50" />
+                                <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                    ClipboardContentBinding="{x:Null}" Header="Client" MinWidth="27"
+                                                    Width="90" />
+                                <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                    ClipboardContentBinding="{x:Null}" Header="Phone number"
+                                                    MinWidth="27"
+                                                    Width="90" />
+                                <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                    ClipboardContentBinding="{x:Null}" Header="Employee" MinWidth="27"
+                                                    Width="90" />
+                                <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                    ClipboardContentBinding="{x:Null}" Header="Job" MinWidth="27"
+                                                    Width="90" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Administrator" Header="Administrator" FontFamily="Adobe Fan Heiti Std B"
+                     BorderBrush="#FF1FC7BF">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White" Offset="0.494" />
+                        <GradientStop Color="#FF55B6B6" Offset="0.989" />
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <TabControl x:Name="SecondTab" Margin="0,0,-2,1">
+                    <TabItem Header="Refill Stock" Height="23" HorizontalAlignment="Left" VerticalAlignment="Top"
+                             Margin="-2,0,-6,0" Width="80">
+                        <Grid Background="#FFE5E5E5">
+                            <ComboBox x:Name="RsBrandCb" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"
+                                      Margin="10,40,0,0" SelectionChanged="BrandCb_Selector" />
+                            <ComboBox x:Name="RsTypeCb" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"
+                                      Margin="147,40,0,0" SelectionChanged="TypeCb_Selector" />
+                            <ComboBox x:Name="RsProductCb" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                      Width="211" Margin="56,73,0,0" SelectionChanged="ProductCb_Selector" />
+                            <ComboBox x:Name="RsVolumeCb" HorizontalAlignment="Left" Margin="292,73,0,0"
+                                      VerticalAlignment="Top" Width="73" SelectionChanged="VolumeCb_Selector" />
+                            <Label Content="Product Brand" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                   RenderTransformOrigin="0.976,0.731" Margin="10,10,0,0" />
+                            <Label Content="Product type" HorizontalAlignment="Left" Margin="147,10,0,0"
+                                   VerticalAlignment="Top" RenderTransformOrigin="1.743,0.385" />
+                            <Label Content="Name" HorizontalAlignment="Left" Margin="10,73,0,0" VerticalAlignment="Top" />
+                            <Button x:Name="RsAddButton" Content="Add quantity" Margin="0,10,10,0"
+                                    VerticalAlignment="Top" Height="25"
+                                    HorizontalAlignment="Right" Width="109" Click="AddButton_Click" />
+                            <DataGrid x:Name="StockGrid" Margin="10,104,10,10" SelectionMode="Single"
+                                      ClipToBounds="True" IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                        ClipboardContentBinding="{x:Null}" Header="Date"
+                                                        Width="0.2*" />
+                                    <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                        ClipboardContentBinding="{x:Null}" Header="Employee"
+                                                        Width="0.16*" />
+                                    <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                        ClipboardContentBinding="{x:Null}" Header="Product Brand"
+                                                        Width="0.13*" />
+                                    <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                        ClipboardContentBinding="{x:Null}" Header="Product Type"
+                                                        Width="0.13*" />
+                                    <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                        ClipboardContentBinding="{x:Null}" Header="Product Name"
+                                                        Width="0.17*" />
+                                    <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                        ClipboardContentBinding="{x:Null}" Header="Volume"
+                                                        Width="0.1*" />
+                                    <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                        ClipboardContentBinding="{x:Null}" Header="Quantity"
+                                                        Width="0.15*" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Button Content="Delete record" Margin="0,70,10,0" RenderTransformOrigin="0.523,1.091"
+                                    HorizontalAlignment="Right" Width="109" Height="25" VerticalAlignment="Top" >
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                        <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                        <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                        <GradientStop Color="Red" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
+                            <Label Content="Remaining in stock" HorizontalAlignment="Left" Margin="288,10,0,0"
+                                   VerticalAlignment="Top"
+                                   RenderTransformOrigin="0.924,0.615" Height="26" />
+                            <Label x:Name="RsRemainingLabel" Content="" HorizontalAlignment="Left" Margin="292,40,0,0"
+                                   VerticalAlignment="Top"
+                                   Width="103" Height="22" RenderTransformOrigin="-0.361,0.5" />
+                            <TextBox x:Name="RsInputTextbox" HorizontalAlignment="Left" Height="22" Margin="415,40,0,0"
+                                     TextWrapping="Wrap"
+                                     VerticalAlignment="Top" Width="61" TextAlignment="Center" Text="0" />
+                            <Label Content="Add/Remove amount" HorizontalAlignment="Left" Margin="410,10,0,0"
+                                   VerticalAlignment="Top" Height="26" RenderTransformOrigin="-3.605,0.474" />
+                            <Button x:Name="RsSubstractButton" Content="Substract quantity" Margin="0,40,10,0"
+                                    VerticalAlignment="Top" Height="25"
+                                    HorizontalAlignment="Right" Width="109" RenderTransformOrigin="0.523,0.167"
+                                    Click="AddButton_Click" />
+                            <Button Content="Release selected" Margin="415,70,0,0" VerticalAlignment="Top" Height="25"
+                                    HorizontalAlignment="Left" Width="124" Click="ReleaseSelected_Click" />
+                            <Label Content="ml" HorizontalAlignment="Left" Margin="370,70,0,0" VerticalAlignment="Top"
+                                   Width="25" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Manage products" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top"
+                             Width="111" Margin="-3,0,0,0">
+                        <Grid Background="#FFE5E5E5">
+                            <Grid HorizontalAlignment="Left" Margin="10,10,0,56" Width="240">
+                                <Label Content="Brand" HorizontalAlignment="Left" Margin="9,31,0,0"
+                                       VerticalAlignment="Top"
+                                       Width="53" RenderTransformOrigin="0.509,-0.115" />
+                                <Label Content="Type" HorizontalAlignment="Left" Margin="10,59,0,0"
+                                       VerticalAlignment="Top"
+                                       Width="45" RenderTransformOrigin="0.489,0.5" />
+                                <Label Content="Name" HorizontalAlignment="Left" Margin="10,87,0,0"
+                                       VerticalAlignment="Top"
+                                       Width="54" RenderTransformOrigin="0.111,0.538" />
+                                <Label Content="Volume" HorizontalAlignment="Left" Margin="10,116,0,0"
+                                       VerticalAlignment="Top"
+                                       Width="65" />
+                                <ComboBox x:Name="MpBrandCb" HorizontalAlignment="Left" Margin="101,31,0,0"
+                                          VerticalAlignment="Top" Height="23" Width="129" />
+                                <ComboBox x:Name="MpTypeCb" HorizontalAlignment="Left" Margin="101,59,0,0"
+                                          VerticalAlignment="Top" Height="23" Width="129" />
+                                <TextBox x:Name="MpNameTb" HorizontalAlignment="Left" Height="23" Margin="101,87,0,0"
+                                         TextWrapping="Wrap" VerticalAlignment="Top" Width="129" />
+                                <Label Content="ml" HorizontalAlignment="Left" Margin="152,114,0,0"
+                                       VerticalAlignment="Top"
+                                       Width="29" RenderTransformOrigin="2.69,0.577" />
+                                <TextBox x:Name="MpVolumeTb" HorizontalAlignment="Left" Height="23"
+                                         Margin="101,115,0,0"
+                                         TextWrapping="Wrap" VerticalAlignment="Top" Width="46"
+                                         RenderTransformOrigin="1.478,0.389" />
+                                <Label Content="Manage products" HorizontalAlignment="Left"
+                                       VerticalAlignment="Top" RenderTransformOrigin="-0.263,0.077" Margin="9,0,0,0" />
+                            </Grid>
+                            <Grid HorizontalAlignment="Left" Margin="10,0,0,10" Width="240" Height="46"
+                                  VerticalAlignment="Bottom">
+                                <Button Content="Add" HorizontalAlignment="Left" Margin="10,11,0,0"
+                                        VerticalAlignment="Top" Width="70" Height="25"
+                                        HorizontalContentAlignment="Center"
+                                        VerticalContentAlignment="Center" Click="MpAddButton_Click" />
+                                <Button Content="Manage" HorizontalAlignment="Left" Margin="85,11,0,0"
+                                        VerticalAlignment="Top" Width="70" Height="25"
+                                        RenderTransformOrigin="0.82,0.52" >
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                            <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                            <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                            <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                            <GradientStop Color="#FFFF0202" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                                <Button Content="Delete" HorizontalAlignment="Left" Margin="160,11,0,0"
+                                        VerticalAlignment="Top" Width="70" Height="25" >
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                            <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                            <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                            <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                            <GradientStop Color="Red" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                            </Grid>
+                            <Grid Margin="280,10,10,10">
+                                <Label x:Name="ListboxTitle" Content="Products" HorizontalAlignment="Center"
+                                       VerticalAlignment="Top" Margin="10,0,0,0" />
+                                <DataGrid x:Name="ProductGrid" Margin="10,30,10,10" SelectionMode="Single"
+                                          ClipToBounds="True" IsReadOnly="True"
+                                          SelectionChanged="BrandTypeList_OnSelectionChanged"
+                                          HorizontalGridLinesBrush="#FF727272"
+                                          VerticalGridLinesBrush="#FF727272">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                            ClipboardContentBinding="{x:Null}" Header="ID"
+                                                            MinWidth="27"
+                                                            Width="30" />
+                                        <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                            ClipboardContentBinding="{x:Null}" Header="Brand"
+                                                            Width="80" />
+                                        <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                            ClipboardContentBinding="{x:Null}" Header="Type" Width="90" />
+                                        <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                            ClipboardContentBinding="{x:Null}" Header="Name"
+                                                            Width="120" />
+                                        <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                            ClipboardContentBinding="{x:Null}" Header="Quantity"
+                                                            Width="60" />
+                                        <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                            ClipboardContentBinding="{x:Null}" Header="Volume"
+                                                            Width="60" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Manage brands/types" HorizontalAlignment="Left" Height="23"
+                             VerticalAlignment="Top"
+                             Width="133" Margin="-4,0,0,0">
+                        <Grid Background="#FFE5E5E5">
+                            <Grid Margin="10,13,349,10">
+                                <RadioButton x:Name="BrandRButton" Content="Manage Brands" HorizontalAlignment="Left"
+                                             Margin="10,10,0,0" VerticalAlignment="Top"
+                                             GroupName="BrandTypeRButtonGroup"
+                                             IsChecked="True" Checked="BtRadioButton_CheckedChanged" />
+                                <DataGrid x:Name="BrandTypeGrid" Margin="10,40,10,10" SelectionMode="Single"
+                                          ClipToBounds="True" IsReadOnly="True"
+                                          SelectionChanged="BrandTypeList_OnSelectionChanged"
+                                          HorizontalGridLinesBrush="#FF727272"
+                                          VerticalGridLinesBrush="#FF727272">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                            ClipboardContentBinding="{x:Null}" Header="ID"
+                                                            MinWidth="27"
+                                                            Width="28" />
+                                        <DataGridTextColumn Binding="{x:Null}" CanUserResize="False"
+                                                            ClipboardContentBinding="{x:Null}" Header="Brand"
+                                                            MinWidth="260" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <RadioButton x:Name="TypeRButton" Content="Manage Types"
+                                             Margin="146,10,54,0" VerticalAlignment="Top"
+                                             GroupName="BrandTypeRButtonGroup"
+                                             Checked="BtRadioButton_CheckedChanged" RenderTransformOrigin="0.816,0.714" />
+                            </Grid>
+                            <Grid Margin="390,10,10,149">
+                                <Label x:Name="BtSelectedLabel" Content="Selected brand"
+                                       Margin="0,39,199,0" VerticalAlignment="Top" RenderTransformOrigin="1.674,0.69"
+                                       HorizontalAlignment="Right" Width="89" />
+                                <TextBlock x:Name="BtNameSelection" HorizontalAlignment="Right" MaxWidth="160"
+                                           Margin="0,39,10,0" Text="Unknown" VerticalAlignment="Top"
+                                           RenderTransformOrigin="0.08,-0.375" TextAlignment="Right"
+                                           FlowDirection="RightToLeft" Height="46"
+                                           ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                           ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                           Grid.IsSharedSizeScope="True"
+                                           ScrollViewer.CanContentScroll="True" TextWrapping="Wrap" />
+                                <Label Content="Selcted Id" Margin="0,10,222,0" VerticalAlignment="Top"
+                                       HorizontalAlignment="Right" Width="66" RenderTransformOrigin="0.773,-0.125" />
+                                <TextBlock x:Name="BtIdSelection" HorizontalAlignment="Right" Margin="0,15,10,0"
+                                           TextWrapping="Wrap" Text="Unknown" VerticalAlignment="Top"
+                                           RenderTransformOrigin="0.08,-0.375" TextAlignment="Right" />
+
+                                <Button Content="Manage" Margin="0,90,10,0" VerticalAlignment="Top" Height="25"
+                                        HorizontalAlignment="Right" Width="125" >
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                            <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                            <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                            <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                            <GradientStop Color="#FFFF0404" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                                <Button Content="Delete" Margin="0,120,10,0" VerticalAlignment="Top" Height="25"
+                                        HorizontalAlignment="Right" Width="125" >
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                            <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                            <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                            <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                            <GradientStop Color="Red" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                            </Grid>
+                            <Grid Margin="390,200,10,10">
+                                <TextBox x:Name="BtTextBoxAdd" Margin="0,0,10,59"
+                                         TextWrapping="Wrap" ToolTip="Enter new name" HorizontalAlignment="Right"
+                                         Width="173" Height="54" VerticalAlignment="Bottom" />
+                                <Label x:Name="BtLabelAdd" Content="Brand name" HorizontalAlignment="Right"
+                                       Margin="0,0,214,89"
+                                       VerticalAlignment="Bottom" RenderTransformOrigin="2.279,0.414" />
+                                <Button Content="Add" Margin="0,0,10,10" Click="BtAddButton_Click"
+                                        HorizontalAlignment="Right" Width="173" Height="29" VerticalAlignment="Bottom" />
+                            </Grid>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Manage Employees" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top"
+                             Width="123" Margin="-5,0,-21,0">
+                        <Grid Background="#FFE5E5E5">
+                            <Grid HorizontalAlignment="Left" Margin="10,10,0,56" Width="240">
+                                <Label Content="Name" HorizontalAlignment="Left" Margin="10,29,0,0"
+                                       VerticalAlignment="Top" />
+                                <TextBox x:Name="EmNameBox" HorizontalAlignment="Left" Height="23" Margin="110,31,0,0"
+                                         TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+                                <TextBox x:Name="EmSurnBox" HorizontalAlignment="Left" Height="23" Margin="110,58,0,0"
+                                         TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+                                <TextBox x:Name="EmPhoneBox" HorizontalAlignment="Left" Height="23" Margin="110,86,0,0"
+                                         TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+                                <TextBox x:Name="EmAddressBox" HorizontalAlignment="Left" Height="23"
+                                         Margin="110,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+                                <TextBox x:Name="EmZipCodeBox" HorizontalAlignment="Left" Height="23"
+                                         Margin="110,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+                                <TextBox x:Name="EmEmailBox" HorizontalAlignment="Left" Height="23"
+                                         Margin="110,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+                                <Label Content="Surname" HorizontalAlignment="Left" Margin="10,56,0,0"
+                                       VerticalAlignment="Top" />
+                                <Label Content="Phone" HorizontalAlignment="Left" Margin="10,85,0,0"
+                                       VerticalAlignment="Top" />
+                                <Label Content="Address" HorizontalAlignment="Left" Margin="10,114,0,0"
+                                       VerticalAlignment="Top" />
+                                <Label Content="Zip Code" HorizontalAlignment="Left" Margin="9,142,0,0"
+                                       VerticalAlignment="Top" />
+                                <Label Content="Email" HorizontalAlignment="Left" Margin="10,171,0,0"
+                                       VerticalAlignment="Top" />
+                                <TextBox x:Name="EmUserBox" HorizontalAlignment="Left" Height="23" Margin="110,206,0,0"
+                                         TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+                                <Label Content="Username" HorizontalAlignment="Left" Margin="10,205,0,0"
+                                       VerticalAlignment="Top" />
+                                <Label x:Name="EmPassBox" Content="Password" HorizontalAlignment="Left"
+                                       Margin="10,234,0,0"
+                                       VerticalAlignment="Top" RenderTransformOrigin="0.633,0.458" />
+                                <PasswordBox x:Name="EmPassBox1" HorizontalAlignment="Left" Margin="110,234,0,0"
+                                             VerticalAlignment="Top" Height="23" Width="120" />
+                                <Label Content="Employee information" Margin="10,0,104,0" VerticalAlignment="Top"
+                                       RenderTransformOrigin="0,0.625" HorizontalAlignment="Center" />
+                            </Grid>
+                            <Grid Margin="280,10,10,10">
+                                <DataGrid x:Name="EmployeeGrid" Margin="10,30,10,10" SelectionMode="Single"
+                                          ClipToBounds="True" IsReadOnly="True"
+                                          SelectionChanged="BrandTypeList_OnSelectionChanged"
+
+                                          HorizontalGridLinesBrush="#FF727272"
+                                          VerticalGridLinesBrush="#FF727272">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn CanUserResize="False"
+                                                            ClipboardContentBinding="{x:Null}" Header="ID"
+                                                            MinWidth="27"
+                                                            Width="30" />
+                                        <DataGridTextColumn CanUserResize="False"
+                                                            ClipboardContentBinding="{x:Null}" Header="Name" Width="80" />
+                                        <DataGridTextColumn CanUserResize="False"
+                                                            ClipboardContentBinding="{x:Null}" Header="Surname"
+                                                            Width="90" />
+                                        <DataGridTextColumn CanUserResize="False"
+                                                            ClipboardContentBinding="{x:Null}" Header="Phone number"
+                                                            Width="120" />
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <Label Content="Employees" Margin="10,0,0,0" VerticalAlignment="Top"
+                                       RenderTransformOrigin="0,0.625" HorizontalAlignment="Center" />
+                            </Grid>
+                            <Grid HorizontalAlignment="Left" Margin="10,0,0,10" Width="240" Height="46"
+                                  VerticalAlignment="Bottom">
+                                <Button Content="Delete" HorizontalAlignment="Left" Margin="160,11,0,0"
+                                        VerticalAlignment="Top" Width="70" Height="25" >
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                            <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                            <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                            <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                            <GradientStop Color="#FFFF0202" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                                <Button Content="Manage" HorizontalAlignment="Left" Margin="85,11,0,0"
+                                        VerticalAlignment="Top" Width="70" Height="25" >
+                                    <Button.Background>
+                                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                            <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                            <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                            <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                            <GradientStop Color="#FFFF0404" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Button.Background>
+                                </Button>
+                                <Button x:Name="AddEmployee" Content="Add" HorizontalAlignment="Left"
+                                        Margin="10,11,0,0" VerticalAlignment="Top" Width="70" Height="25"
+                                        RenderTransformOrigin="0.5,0.5" Click="EmAddEmployee_Click" />
+                            </Grid>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </TabItem>
+        </TabControl>
+        <Grid Margin="210,0,0,372">
+            <Label x:Name="usernameLabel" Content="" FontWeight="Bold" Margin="0,-3,80,0" HorizontalAlignment="Right"
+                   Width="auto" Height="auto" VerticalAlignment="Top" />
+            <Button x:Name="LogoutButton" Content="Logout" VerticalAlignment="Top"
+                    Background="#FFBA86BF" FontWeight="Bold" Height="21" FontSize="11" HorizontalAlignment="Right"
+                    Width="75" Click="LogoutButton_Click" />
+        </Grid>
+
+    </Grid>
+</Window>

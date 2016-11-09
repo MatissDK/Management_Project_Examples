@@ -1,0 +1,48 @@
+﻿<Window x:Class="GUI.ManageSchedule"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Icon="Graphical items/scissors.png"
+        Title="Manage Schedule" Height="500" Width="600" MinHeight="500" MinWidth="600" MaxWidth="500">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0, 1" StartPoint="0,0">
+            <GradientStop Color="#FFB4EEEE" Offset="0" />
+            <GradientStop Color="#FF93DADA" Offset="0" />
+            <GradientStop Color="#FFB9ECF1" Offset="0.1" />
+            <GradientStop Color="#FF55B6B6" Offset="1" />
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+        <Grid Margin="5" Background="#FFF1DDDD">
+            <Grid Background="White" Margin="8">
+                <Grid Margin="10,10,10,81">
+                    <Image Source="Icon_DragAndDrop.png" Opacity="0.2" Stretch="Uniform" HorizontalAlignment="Center"
+                           Width="166" Height="166" VerticalAlignment="Center" />
+                    <ListBox x:Name="ScAllEmployeeGrid" Drop="DataGrid_Drop" AllowDrop="True"
+                             PreviewMouseLeftButtonDown="ScAllEmployeeGrid_OnPreviewMouseLeftButtonDown"
+                             HorizontalAlignment="Left" Margin="10,34,0,10" Width="125" />
+                    <ListBox x:Name="ScActiveEmployeeGrid" Drop="DataGrid_Drop" AllowDrop="True"
+                             PreviewMouseLeftButtonDown="ScAllEmployeeGrid_OnPreviewMouseLeftButtonDown"
+                             Margin="0,34,10,10" HorizontalAlignment="Right" Width="125" />
+                    <Label Content="Employee List" HorizontalAlignment="Left" Margin="29,3,0,0" VerticalAlignment="Top" />
+                    <Label Content="Active Employees" Margin="0,3,20,0" VerticalAlignment="Top"
+                           HorizontalAlignment="Right" />
+                    <Grid Margin="140,171,140,10">
+                        <Label Content="&lt;- Drag&amp;Drop Lists -&gt;" HorizontalAlignment="Center" Height="26"
+                               VerticalAlignment="Bottom" Margin="59,0,57,31" />
+                        <Button Content="RESET" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="80"
+                                Click="ResetButton_Click" Height="26" />
+                    </Grid>
+                </Grid>
+                <Grid Margin="10,0,10,10" Height="66" VerticalAlignment="Bottom">
+                    <Button Content="Cancel" HorizontalAlignment="Left" Margin="10,21,0,10"
+                            Width="125" Click="ScMeCancelButton_Click" />
+                    <Button Content="Save" Margin="0,21,10,10"
+                            HorizontalAlignment="Right" Width="125" Click="ScMeSaveButton_Click" />
+                    <Label x:Name="ScMeDateLabel" Content="" HorizontalAlignment="Center" VerticalAlignment="Center"
+                           Margin="235,22,211,8" FontWeight="SemiBold" Width="100" Height="36" />
+                </Grid>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Window>
